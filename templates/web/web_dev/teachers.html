@@ -1,0 +1,270 @@
+{% extends "web/web_dev/partials/base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'web/css/style4.css' %}">
+{% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"> {% endcomment %}
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>teachers</title>
+   <link rel="stylesheet" href="{% static 'web/css/style4.css' %}">
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+ <!-- custom css file link  -->
+   <link rel="stylesheet" href="{% static 'web/css/style.css' %}"> 
+
+</head>
+<body>
+
+<header class="header">
+   
+   <section class="flex">
+
+      <a href="{% url 'web:home' %}" class="logo">Educa.</a>
+
+      <form action="" method="post" class="search-form">
+         <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+{% for p in details %}
+      <div class="profile">
+         <img src="{{p.image.url}}" class="image" alt="">
+         <h3 class="name">{{p.name}}</h3>
+         <p class="role">studen</p>
+         <a href="{% static 'web/profile.html' %}" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="{% url 'web:student_signin' %}" class="option-btn">logout</a> {% endcomment %}
+            {% comment %} <a href="{% url 'student_signup' %}" class="option-btn">register</a> {% endcomment %}
+         {% comment %} </div>
+      </div>
+      {% endfor %}
+   </section>
+
+</header>   
+
+<div class="side-bar">
+
+   <div id="close-btn">
+      <i class="fas fa-times"></i>
+   </div>
+{% for p in details %}
+   <div class="profile">
+      <img src="{{p.image.url}}" class="image" alt="">
+      <h3 class="name">{{p.name}}</h3>
+      <p class="role">student</p>
+      <a href="{% url 'web:profile' %}" class="btn">view profile</a>
+   </div>
+   {% endfor %}
+   <nav class="navbar">
+      <a href="{% url 'web:home' %}"><i class="fas fa-home"></i><span>Home</span></a>
+      <a href="{% url 'web:about' %}"><i class="fas fa-question"></i><span>About</span></a>
+      <a href="{% url 'web:topics' %}"><i class="fas fa-graduation-cap"></i><span>Topics</span></a>
+      <a href="{% url 'web:teachers' %}"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
+      <a href="{% url 'web:contact' %}"><i class="fas fa-headset"></i><span>Contact Us</span></a>
+   </nav>
+
+</div> {% endcomment %}
+
+<section class="teachers">
+
+   <h1 class="heading">expert teachers</h1>
+
+   <form action="" method="post" class="search-tutor">
+      <input type="text" name="search_box" placeholder="search tutors..." required maxlength="100">
+      <button type="submit" class="fas fa-search" name="search_tutor"></button>
+   </form>
+      <div class="box-container">
+
+      {% comment %} <div class="box offer">
+         <h3>become a tutor</h3>
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, itaque ipsam fuga ex et aliquam.</p>
+         <a href="" class="inline-btn">get started</a>
+      </div>  {% endcomment %}
+
+      {% for p in t_profu %}
+      <div class="container" class="col">
+        
+         <div class="card">
+            
+             <div class="card__1">
+                 <div class="ham">
+                     <i class="fa-solid fa-bars-staggered"></i>
+                     <i class="fa-solid fa-gear"></i>
+                 </div>
+                 <img src="{{p.teacher_image.url}}" alt="">
+                 <div class="content">
+                     <h1>{{p.teacher_name}}</h1>
+                     <p>{{p.teacher_position}}</p>
+                 </div>
+                 <div class="social">
+                     <i class="fa-brands fa-instagram" href="{{p.insta_url}}"><a href=""></a></i>
+                     <i class="fa-brands fa-telegram" href="{{p.wp_url}}"></i>
+                     <i class="fa-brands fa-linkedin" href="{{p.linkedin_url}}"></i>
+                 </div>
+                 <a href="" class="btn">Follow</a>
+             </div>
+             <div class="card__2">
+                 <p>Learn more about  Coding</p>
+                 <i class="fa-solid fa-arrow-down"></i>
+             </div>
+            
+         </div>
+        
+     </div>
+     {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      {% comment %} <div class="box">
+         <div class="tutor">
+            <img src="{% static 'web/images/pic-2.jpg' %}" alt="">
+            <div>
+               <h3>john deo</h3>
+               <span>developer</span>
+            </div>
+         </div>
+         <p>Age : <span>24</span></p>
+         <p>Gender : <span>male</span></p>
+         <p>Contact : <span>+919876543210</span></p>
+         <a href="#" class="inline-btn">view profile</a>
+      </div> 
+    <div class="box">
+         <div class="tutor">
+            <img src="{% static 'web/images/pic-2.jpg' %}" alt="">
+            <div>
+               <h3>john deo</h3>
+               <span>developer</span>
+            </div>
+         </div>
+         <p>Age : <span>24</span></p>
+         <p>Gender : <span>male</span></p>
+         <p>Contact : <span>+919876543210</span></p>
+         <a href="#" class="inline-btn">view profile</a>
+      </div>  {% endcomment %}
+   
+      {% comment %} <div class="box">
+         <div class="tutor">
+            <img src="{% static 'web/images/pic-3.jpg' %}" alt="">
+            <div>
+               <h3>john deo</h3>
+               <span>developer</span>
+            </div>
+         </div>
+         <p>total playlists : <span>4</span></p>
+         <p>total videos : <span>18</span></p>
+         <p>total likes : <span>1208</span></p>
+         <a href="{% url 'teacher_profile' %}" class="inline-btn">view profile</a>
+      </div>
+
+      <div class="box">
+         <div class="tutor">
+            <img src="{% static 'web/images/pic-4.jpg' %}" alt="">
+            <div>
+               <h3>john deo</h3>
+               <span>developer</span>
+            </div>
+         </div>
+         <p>total playlists : <span>4</span></p>
+         <p>total videos : <span>18</span></p>
+         <p>total likes : <span>1208</span></p>
+         <a href="{% url 'teacher_profile' %}" class="inline-btn">view profile</a>
+      </div>
+
+      <div class="box">
+         <div class="tutor">
+            <img src="{% static 'web/images/pic-5.jpg' %}" alt="">
+            <div>
+               <h3>john deo</h3>
+               <span>developer</span>
+            </div>
+         </div>
+         <p>total playlists : <span>4</span></p>
+         <p>total videos : <span>18</span></p>
+         <p>total likes : <span>1208</span></p>
+         <a href="{% url 'teacher_profile' %}" class="inline-btn">view profile</a>
+      </div>
+
+      <div class="box">
+         <div class="tutor">
+            <img src="{% static 'web/images/pic-6.jpg' %}" alt="">
+            <div>
+               <h3>john deo</h3>
+               <span>developer</span>
+            </div>
+         </div>
+         <p>total playlists : <span>4</span></p>
+         <p>total videos : <span>18</span></p>
+         <p>total likes : <span>1208</span></p>
+         <a href="{% url 'teacher_profile' %}" class="inline-btn">view profile</a>
+      </div>
+
+      <div class="box">
+         <div class="tutor">
+            <img src="{% static 'web/images/pic-7.jpg' %}" alt="">
+            <div>
+               <h3>john deo</h3>
+               <span>developer</span>
+            </div>
+         </div>
+         <p>total playlists : <span>4</span></p>
+         <p>total videos : <span>18</span></p>
+         <p>total likes : <span>1208</span></p>
+         <a href="{% url 'teacher_profile' %}" class="inline-btn">view profile</a>
+      </div>
+
+      <div class="box">
+         <div class="tutor">
+            <img src="{% static 'web/images/pic-8.jpg' %}" alt="">
+            <div>
+               <h3>john deo</h3>
+               <span>developer</span>
+            </div>
+         </div>
+         <p>total playlists : <span>4</span></p>
+         <p>total videos : <span>18</span></p>
+         <p>total likes : <span>1208</span></p>
+         <a href="{% url 'teacher_profile' %}" class="inline-btn">view profile</a>
+      </div> {% endcomment %}
+
+   </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock  %}

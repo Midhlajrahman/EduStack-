@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'web/css/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'web/css/style3.css' %}">
+</head>
+<body>
+    
+    <header class="header">
+   
+        <section class="flex">
+     
+           <a href="home.html" class="logo">EduStack</a>
+     
+          
+     
+           <div class="icons">
+        
+              <div id="user-btn" class="fas fa-user"></div>
+              <div id="toggle-btn" class="fas fa-sun"></div>
+           </div>
+     
+           <div class="profile">
+              <img src="{% static 'web/images/pic-1.jpg' %}" class="image" alt="">
+              <h3 class="name">shaikh anas</h3>
+              <p class="role">studen</p>
+              <a href="{% url 'web:profile' %}" class="btn">view profile</a>
+              <div class="flex-btn">
+                 <a href="{% url 'web:signup' %}" class="option-btn">SignUp</a>
+                 <a href="{% url 'web:student_signin' %}" class="option-btn">LogIn</a>
+                 {% comment %} <a href="" class="option-btn">register</a> {% endcomment %}
+              </div>
+           </div>
+     
+        </section>
+     
+     </header>   
+     
+     <section class="contact">
+     
+        <div class="row">
+     
+           <div class="image">
+              <img src="{% static 'web/images/Studying-amico.svg' %}" alt="" class="study_image">
+           </div>
+     
+           <form action="" method="POST">
+            {% csrf_token %}
+              <h3> Login </h3>
+              
+              <input type="text" placeholder="enter your student id" name="student_id" id="student_num" required maxlength="50" class="box">
+              <input type="text" placeholder="email" name="email" id="email" required maxlength="50" class="box">
+              {% comment %} <select name="course_option" id="course_option"required maxlength="50" class="box">
+               {% for s in selectbox %}
+               <option value="web developer" id="web_dev" name="web_dev">{{s.course_name}}</option>
+               {% endfor %}
+              </select> {% endcomment %}
+              
+              <input type="submit" value="Submit" class="inline-btn" name="submit">
+           </form>
+     
+        </div>
+     
+        
+        </div>
+     
+     </section>
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     
+     <footer class="footer">
+     
+        &copy; copyright @ 2022 by <span>Midhlaj Rahman</span>
+     
+     </footer>
+     
+     <!-- custom js file link  -->
+     <script src="{% static 'web/script/script.js' %}"></script>
+     
+        
+</body>
+</html>
