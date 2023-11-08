@@ -86,17 +86,7 @@ WSGI_APPLICATION = 'edusite.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'edudb',
-#         'USER' : 'postgres' ,
-#         'PASSWORD' : 'root' ,
-#         'PORT' : '5432' ,
-#         'HOST' : 'localhost'
 
-#     }
-# }
 
 # DEBUG = config('DEBUG', default=True, cast=bool)
 DATABASES = {
