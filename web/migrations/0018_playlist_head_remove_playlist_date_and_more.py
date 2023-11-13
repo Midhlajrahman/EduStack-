@@ -4,41 +4,48 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0017_alter_watch_video_video'),
+        ("web", "0017_alter_watch_video_video"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='playlist_head',
+            name="playlist_head",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('topic_thumb', models.ImageField(upload_to='media')),
-                ('how_many_videos', models.CharField(max_length=50)),
-                ('tutor_image', models.ImageField(upload_to='media')),
-                ('tutor_name', models.CharField(max_length=50)),
-                ('date', models.CharField(max_length=50)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("topic_thumb", models.ImageField(upload_to="media")),
+                ("how_many_videos", models.CharField(max_length=50)),
+                ("tutor_image", models.ImageField(upload_to="media")),
+                ("tutor_name", models.CharField(max_length=50)),
+                ("date", models.CharField(max_length=50)),
             ],
         ),
         migrations.RemoveField(
-            model_name='playlist',
-            name='date',
+            model_name="playlist",
+            name="date",
         ),
         migrations.RemoveField(
-            model_name='playlist',
-            name='how_many_videos',
+            model_name="playlist",
+            name="how_many_videos",
         ),
         migrations.RemoveField(
-            model_name='playlist',
-            name='topic_thumb',
+            model_name="playlist",
+            name="topic_thumb",
         ),
         migrations.RemoveField(
-            model_name='playlist',
-            name='tutor_image',
+            model_name="playlist",
+            name="tutor_image",
         ),
         migrations.RemoveField(
-            model_name='playlist',
-            name='tutor_name',
+            model_name="playlist",
+            name="tutor_name",
         ),
     ]

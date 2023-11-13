@@ -4,22 +4,29 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web_2', '0005_rename_css_course_course_1_delete_html_course_and_more'),
+        ("web_2", "0005_rename_css_course_course_1_delete_html_course_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='teacher_profile',
+            name="teacher_profile",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('teacher_image', models.ImageField(upload_to='media')),
-                ('teacher_name', models.CharField(max_length=50)),
-                ('teacher_position', models.CharField(max_length=50)),
-                ('insta_url', models.CharField(max_length=50)),
-                ('wp_url', models.CharField(max_length=50)),
-                ('linkedin_url', models.CharField(max_length=50)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("teacher_image", models.ImageField(upload_to="media")),
+                ("teacher_name", models.CharField(max_length=50)),
+                ("teacher_position", models.CharField(max_length=50)),
+                ("insta_url", models.CharField(max_length=50)),
+                ("wp_url", models.CharField(max_length=50)),
+                ("linkedin_url", models.CharField(max_length=50)),
             ],
         ),
     ]

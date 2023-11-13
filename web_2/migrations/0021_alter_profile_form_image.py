@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web_2', '0020_remove_profile_form_pic_profile_form_image'),
+        ("web_2", "0020_remove_profile_form_pic_profile_form_image"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='profile_form',
-            name='image',
-            field=models.FileField(upload_to='media'),
+            model_name="profile_form",
+            name="image",
+            field=models.FileField(upload_to="media"),
         ),
     ]

@@ -4,15 +4,14 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0046_signup_form_username_name'),
+        ("web", "0046_signup_form_username_name"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='signup_form',
-            old_name='username_name',
-            new_name='username',
+            model_name="signup_form",
+            old_name="username_name",
+            new_name="username",
         ),
     ]

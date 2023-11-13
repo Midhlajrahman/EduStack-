@@ -4,20 +4,19 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0001_initial'),
+        ("web", "0001_initial"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='course',
-            old_name='sub',
-            new_name='howmany_videos',
+            model_name="course",
+            old_name="sub",
+            new_name="howmany_videos",
         ),
         migrations.RenameField(
-            model_name='course',
-            old_name='videosnum',
-            new_name='video_title',
+            model_name="course",
+            old_name="videosnum",
+            new_name="video_title",
         ),
     ]

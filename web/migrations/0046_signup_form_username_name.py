@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0045_rename_login_form_signup_form'),
+        ("web", "0045_rename_login_form_signup_form"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='signup_form',
-            name='username_name',
+            model_name="signup_form",
+            name="username_name",
             field=models.CharField(default=1, max_length=50),
             preserve_default=False,
         ),

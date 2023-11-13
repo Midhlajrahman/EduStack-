@@ -4,23 +4,30 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web_2', '0009_alter_playlist_1_video_thumbnail'),
+        ("web_2", "0009_alter_playlist_1_video_thumbnail"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='d_playlist_head',
+            name="d_playlist_head",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('topic_thumb', models.ImageField(upload_to='media')),
-                ('how_many_videos', models.CharField(max_length=50)),
-                ('tutor_image', models.ImageField(upload_to='media')),
-                ('tutor_name', models.CharField(max_length=50)),
-                ('date', models.CharField(max_length=50)),
-                ('topic_title', models.CharField(max_length=100)),
-                ('topic_description', models.CharField(max_length=100)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("topic_thumb", models.ImageField(upload_to="media")),
+                ("how_many_videos", models.CharField(max_length=50)),
+                ("tutor_image", models.ImageField(upload_to="media")),
+                ("tutor_name", models.CharField(max_length=50)),
+                ("date", models.CharField(max_length=50)),
+                ("topic_title", models.CharField(max_length=100)),
+                ("topic_description", models.CharField(max_length=100)),
             ],
         ),
     ]

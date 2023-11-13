@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0043_login_form'),
+        ("web", "0043_login_form"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='login_form',
-            name='phone_number',
+            model_name="login_form",
+            name="phone_number",
             field=models.BigIntegerField(),
         ),
     ]

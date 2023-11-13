@@ -4,30 +4,45 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0033_rename_how_many_videos_bootstrap_course_howmany_videos_and_more'),
+        ("web", "0033_rename_how_many_videos_bootstrap_course_howmany_videos_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='react_course',
+            name="react_course",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('authername', models.CharField(max_length=50)),
-                ('auther_image', models.ImageField(upload_to='media')),
-                ('date', models.CharField(max_length=50)),
-                ('howmany_videos', models.CharField(max_length=50)),
-                ('video_title', models.CharField(max_length=50)),
-                ('thumbnail', models.ImageField(upload_to='media')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("authername", models.CharField(max_length=50)),
+                ("auther_image", models.ImageField(upload_to="media")),
+                ("date", models.CharField(max_length=50)),
+                ("howmany_videos", models.CharField(max_length=50)),
+                ("video_title", models.CharField(max_length=50)),
+                ("thumbnail", models.ImageField(upload_to="media")),
             ],
         ),
         migrations.CreateModel(
-            name='react_playlist',
+            name="react_playlist",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('video_thumbnail', models.FileField(upload_to='media')),
-                ('video_title', models.CharField(max_length=50)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("video_thumbnail", models.FileField(upload_to="media")),
+                ("video_title", models.CharField(max_length=50)),
             ],
         ),
     ]

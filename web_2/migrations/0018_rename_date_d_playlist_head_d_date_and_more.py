@@ -4,45 +4,44 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web_2', '0017_playlist_3'),
+        ("web_2", "0017_playlist_3"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='d_playlist_head',
-            old_name='date',
-            new_name='d_date',
+            model_name="d_playlist_head",
+            old_name="date",
+            new_name="d_date",
         ),
         migrations.RenameField(
-            model_name='d_playlist_head',
-            old_name='how_many_videos',
-            new_name='d_how_many_videos',
+            model_name="d_playlist_head",
+            old_name="how_many_videos",
+            new_name="d_how_many_videos",
         ),
         migrations.RenameField(
-            model_name='d_playlist_head',
-            old_name='topic_description',
-            new_name='d_topic_description',
+            model_name="d_playlist_head",
+            old_name="topic_description",
+            new_name="d_topic_description",
         ),
         migrations.RenameField(
-            model_name='d_playlist_head',
-            old_name='topic_thumb',
-            new_name='d_topic_thumb',
+            model_name="d_playlist_head",
+            old_name="topic_thumb",
+            new_name="d_topic_thumb",
         ),
         migrations.RenameField(
-            model_name='d_playlist_head',
-            old_name='topic_title',
-            new_name='d_topic_title',
+            model_name="d_playlist_head",
+            old_name="topic_title",
+            new_name="d_topic_title",
         ),
         migrations.RenameField(
-            model_name='d_playlist_head',
-            old_name='tutor_image',
-            new_name='d_tutor_image',
+            model_name="d_playlist_head",
+            old_name="tutor_image",
+            new_name="d_tutor_image",
         ),
         migrations.RenameField(
-            model_name='d_playlist_head',
-            old_name='tutor_name',
-            new_name='d_tutor_name',
+            model_name="d_playlist_head",
+            old_name="tutor_name",
+            new_name="d_tutor_name",
         ),
     ]

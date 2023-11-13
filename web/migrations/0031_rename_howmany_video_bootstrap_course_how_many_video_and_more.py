@@ -4,30 +4,29 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0030_alter_bootstrap_watch_video_video_thumb'),
+        ("web", "0030_alter_bootstrap_watch_video_video_thumb"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='bootstrap_course',
-            old_name='howmany_video',
-            new_name='how_many_video',
+            model_name="bootstrap_course",
+            old_name="howmany_video",
+            new_name="how_many_video",
         ),
         migrations.RenameField(
-            model_name='css_course',
-            old_name='howmany_video',
-            new_name='how_many_video',
+            model_name="css_course",
+            old_name="howmany_video",
+            new_name="how_many_video",
         ),
         migrations.RenameField(
-            model_name='html_course',
-            old_name='howmany_video',
-            new_name='how_many_video',
+            model_name="html_course",
+            old_name="howmany_video",
+            new_name="how_many_video",
         ),
         migrations.RenameField(
-            model_name='js_course',
-            old_name='howmany_video',
-            new_name='how_many_video',
+            model_name="js_course",
+            old_name="howmany_video",
+            new_name="how_many_video",
         ),
     ]

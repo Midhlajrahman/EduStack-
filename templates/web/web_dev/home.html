@@ -21,13 +21,9 @@
          <h3 class="title">Providing Courses</h3>
          <div class="flex">
             <a href="#"><i class="fas fa-code"></i><span>web Development</span></a>
-            {% comment %} <a href="#"><i class="fas fa-chart-simple"></i><span>business</span></a> {% endcomment %}
             <a href="#"><i class="fas fa-pen"></i><span>Graphic Design</span></a>
             <a href="#"><i class="fas fa-chart-line"></i><span>Digital Marketing</span></a>
-            {% comment %} <a href="#"><i class="fas fa-music"></i><span>music</span></a> {% endcomment %}
-            {% comment %} <a href="#"><i class="fas fa-camera"></i><span>photography</span></a> {% endcomment %}
             <a href="#"><i class="fa-solid fa-mobile"></i><span>App Development</span></a>
-            {% comment %} <a href="#"><i class="fas fa-vial"></i><span>science</span></a> {% endcomment %}
          </div>
       </div>
 
@@ -37,12 +33,10 @@
             <a href="#"><i class="fab fa-html5"></i><span>HTML</span></a>
             <a href="#"><i class="fab fa-css3"></i><span>CSS</span></a>
             <a href="#"><i class="fab fa-js"></i><span>javascript</span></a>
-
             <a href="#"><i class="fab fa-react"></i><span>react</span></a>
             <a href="#"><i class="fab fa-bootstrap"></i><span>bootstrap</span></a>
             <a href="#"><i class="fa-brands fa-python"></i><span>Python</span></a>
             <a href="#"><i class="fa-solid fa-database"></i><span>postgresql</span></a>
-            
          </div>
       </div>
 
@@ -51,20 +45,12 @@
          <p class="tutor">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis, nam?</p>
          <a href="{% url 'web:topics' %}" class="inline-btn">get started</a>
       </div>
-
    </div>
-
 </section>
-
-
-
 <section class="courses">
-
    <h1 class="heading">our Topics</h1>
-
-   <div class="box-container">
+  <div class="box-container">
       {% for c in coursu  %}
-  
       <div class="box">
          <div class="tutor">
             <img src="{{c.image.url}}" alt="">
@@ -81,95 +67,11 @@
          <a href="{% url 'web:playlist' %}" class="inline-btn">view playlist</a>
       </div>
      {% endfor %}
-
-      {% comment %} <div class="box">
-         <div class="tutor">
-            <img src="{% static 'web/images/pic-3.jpg' %}" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="{% static 'web/images/thumb-2.png' %}" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete CSS tutorial</h3>
-         <a href="{% url 'playlist' %}" class="inline-btn">view playlist</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="{% static 'web/images/pic-4.jpg' %}" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="{% static 'web/images/thumb-3.png' %}" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete JS tutorial</h3>
-         <a href="{% url 'playlist' %}" class="inline-btn">view playlist</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="{% static 'web/images/pic-5.jpg' %}" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="{% static 'web/images/thumb-4.png' %}" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete Boostrap tutorial</h3>
-         <a href="playlist.html" class="inline-btn">view playlist</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="{% static 'web/images/pic-6.jpg' %}" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="{% static 'web/images/thumb-5.png' %}" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete JQuery tutorial</h3>
-         <a href="{% url 'playlist' %}" class="inline-btn">view playlist</a>
-      </div>
-
-      <div class="box">
-         <div class="tutor">
-            <img src="{% static 'web/images/pic-7.jpg' %}" alt="">
-            <div class="info">
-               <h3>john deo</h3>
-               <span>21-10-2022</span>
-            </div>
-         </div>
-         <div class="thumb">
-            <img src="{% static 'web/images/thumb-6.png' %}" alt="">
-            <span>10 videos</span>
-         </div>
-         <h3 class="title">complete SASS tutorial</h3>
-         <a href="{% url 'playlist' %}" class="inline-btn">view playlist</a>
-      </div> {% endcomment %}
-
    </div>
-
    <div class="more-btn">
       <a href="{% url 'web:topics' %}" class="inline-option-btn">view all Topics</a>
    </div>
-
 </section>
-
 {% endblock  %}
 
 

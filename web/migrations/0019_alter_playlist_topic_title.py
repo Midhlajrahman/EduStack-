@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0018_playlist_head_remove_playlist_date_and_more'),
+        ("web", "0018_playlist_head_remove_playlist_date_and_more"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='playlist',
-            name='topic_title',
+            model_name="playlist",
+            name="topic_title",
             field=models.CharField(max_length=100),
         ),
     ]

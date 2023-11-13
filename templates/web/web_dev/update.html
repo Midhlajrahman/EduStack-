@@ -1,119 +1,17 @@
 {% extends "web/web_dev/partials/base.html" %}
 {% load static %}
 {% block content %}
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>update</title>
-
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href={% static 'web/css/style.css' %}>
-
-</head>
-<body>
-
-<header class="header">
-   
-   <section class="flex">
-
-      <a href="{% url 'web:home' %}" class="logo">Educa.</a>
-
-      <form action="" method="post" class="search-form">
-         <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
-         <button type="submit" class="fas fa-search"></button>
-      </form>
-
-      <div class="icons">
-         <div id="menu-btn" class="fas fa-bars"></div>
-         <div id="search-btn" class="fas fa-search"></div>
-         <div id="user-btn" class="fas fa-user"></div>
-         <div id="toggle-btn" class="fas fa-sun"></div>
-      </div>
-{% for p in details %}
-      <div class="profile">
-         <img src="{{p.image.url}}" class="image" alt="">
-         <h3 class="name">{{p.name}}</h3>
-         <p class="role">studen</p>
-         <a href="{% url 'web:profile' %}" class="btn">view profile</a>
-         <div class="flex-btn">
-            <a href="{% url 'web:student_signin' %}" class="option-btn">loginout</a>
-            {% comment %} <a href="{% url 'student_signup' %}" class="option-btn">register</a> {% endcomment %}
-         {% comment %} </div>
-      </div>
-      {% endfor %}
-   </section>
-
-</header>   
-
-<div class="side-bar">
-
-   <div id="close-btn">
-      <i class="fas fa-times"></i>
-   </div>
-{% for p in details %}
-   <div class="profile">
-      <img src="{{p.image.url}}" class="image" alt="">
-      <h3 class="name">{{p.name}}</h3>
-      <p class="role">studen</p>
-      <a href="{% url 'web:profile' %}" class="btn">view profile</a>
-   </div>
-   {% endfor %}
-   <nav class="navbar">
-      <a href="{% url 'web:home' %}"><i class="fas fa-home"></i><span>Home</span></a>
-      <a href="{% url 'web:about' %}"><i class="fas fa-question"></i><span>About</span></a>
-      <a href="{% url 'web:topics' %}"><i class="fas fa-graduation-cap"></i><span>Topics</span></a>
-      <a href="{% url 'web:teachers' %}"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
-      <a href="{% url 'web:contact' %}"><i class="fas fa-headset"></i><span>Contact Us</span></a>
-   </nav>
-
-</div>  {% endcomment %}
-
 <section class="form-container">
-
    <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <h3>update profile</h3>
       <p>update name</p>
-      <input type="text" name="student_name" placeholder="shaikh anas" maxlength="50" class="box">
+      <input type="text" name="student_name" placeholder="Enter Your Name" maxlength="50" class="box">
       <p>update email</p>
-      <input type="email" name="student_email" placeholder="shaikh@gmail.come" maxlength="50" class="box">
+      <input type="email" name="student_email" placeholder="example@gmail.come" maxlength="50" class="box">
       <p>update pic</p>
       <input type="file" accept="image/*" class="box" name='student_image'>
       <input type="submit" value="update profile" name="submit" class="btn">
    </form>
-
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% comment %} <footer class="footer">
-
-   &copy; copyright @ 2022 by <span>Midhlaj Rahman</span>
-
-</footer>
-
-<!-- custom js file link  -->
-<script src="{% static 'web/script/script.js' %}"></script>
-
-   
-</body>
-</html> {% endcomment %}
 {% endblock  %}

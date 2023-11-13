@@ -4,18 +4,25 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0012_web_course'),
+        ("web", "0012_web_course"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='playlist',
+            name="playlist",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('thumbnail', models.ImageField(upload_to='media')),
-                ('title', models.CharField(max_length=50)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("thumbnail", models.ImageField(upload_to="media")),
+                ("title", models.CharField(max_length=50)),
             ],
         ),
     ]

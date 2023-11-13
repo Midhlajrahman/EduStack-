@@ -4,25 +4,24 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0049_delete_signup_form'),
+        ("web", "0049_delete_signup_form"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='profile_details',
-            old_name='email',
-            new_name='student_email',
+            model_name="profile_details",
+            old_name="email",
+            new_name="student_email",
         ),
         migrations.RenameField(
-            model_name='profile_details',
-            old_name='image',
-            new_name='student_image',
+            model_name="profile_details",
+            old_name="image",
+            new_name="student_image",
         ),
         migrations.RenameField(
-            model_name='profile_details',
-            old_name='name',
-            new_name='student_name',
+            model_name="profile_details",
+            old_name="name",
+            new_name="student_name",
         ),
     ]

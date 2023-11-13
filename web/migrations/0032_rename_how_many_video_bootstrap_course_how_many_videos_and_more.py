@@ -4,30 +4,29 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0031_rename_howmany_video_bootstrap_course_how_many_video_and_more'),
+        ("web", "0031_rename_howmany_video_bootstrap_course_how_many_video_and_more"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='bootstrap_course',
-            old_name='how_many_video',
-            new_name='how_many_videos',
+            model_name="bootstrap_course",
+            old_name="how_many_video",
+            new_name="how_many_videos",
         ),
         migrations.RenameField(
-            model_name='css_course',
-            old_name='how_many_video',
-            new_name='how_many_videos',
+            model_name="css_course",
+            old_name="how_many_video",
+            new_name="how_many_videos",
         ),
         migrations.RenameField(
-            model_name='html_course',
-            old_name='how_many_video',
-            new_name='how_many_videos',
+            model_name="html_course",
+            old_name="how_many_video",
+            new_name="how_many_videos",
         ),
         migrations.RenameField(
-            model_name='js_course',
-            old_name='how_many_video',
-            new_name='how_many_videos',
+            model_name="js_course",
+            old_name="how_many_video",
+            new_name="how_many_videos",
         ),
     ]

@@ -4,21 +4,28 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0042_profile_details'),
+        ("web", "0042_profile_details"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='login_form',
+            name="login_form",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=50)),
-                ('second_name', models.CharField(max_length=50)),
-                ('email', models.EmailField(max_length=254)),
-                ('phone_number', models.IntegerField()),
-                ('student_id', models.CharField(max_length=30)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("first_name", models.CharField(max_length=50)),
+                ("second_name", models.CharField(max_length=50)),
+                ("email", models.EmailField(max_length=254)),
+                ("phone_number", models.IntegerField()),
+                ("student_id", models.CharField(max_length=30)),
             ],
         ),
     ]

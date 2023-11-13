@@ -4,22 +4,29 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0038_python_watch_video'),
+        ("web", "0038_python_watch_video"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='psql_course',
+            name="psql_course",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('authername', models.CharField(max_length=50)),
-                ('auther_image', models.ImageField(upload_to='media')),
-                ('date', models.CharField(max_length=50)),
-                ('howmany_videos', models.CharField(max_length=50)),
-                ('video_title', models.CharField(max_length=50)),
-                ('thumbnail', models.ImageField(upload_to='media')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("authername", models.CharField(max_length=50)),
+                ("auther_image", models.ImageField(upload_to="media")),
+                ("date", models.CharField(max_length=50)),
+                ("howmany_videos", models.CharField(max_length=50)),
+                ("video_title", models.CharField(max_length=50)),
+                ("thumbnail", models.ImageField(upload_to="media")),
             ],
         ),
     ]

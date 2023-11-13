@@ -4,20 +4,19 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web_2', '0004_html_course_js_course_rename_course_css_course'),
+        ("web_2", "0004_html_course_js_course_rename_course_css_course"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='css_course',
-            new_name='course_1',
+            old_name="css_course",
+            new_name="course_1",
         ),
         migrations.DeleteModel(
-            name='html_course',
+            name="html_course",
         ),
         migrations.DeleteModel(
-            name='js_course',
+            name="js_course",
         ),
     ]

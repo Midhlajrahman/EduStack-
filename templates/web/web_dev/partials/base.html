@@ -6,26 +6,15 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>EduStack</title>
-
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
    <!-- custom css file link  -->
    <link rel="stylesheet" href="{% static 'web/css/style.css' %}">
-   {% comment %} <link rel="stylesheet" href="{% static 'web/css/style2.css' %}">
-   <link rel="stylesheet" href="{% static 'web/css/style3.css' %}"> {% endcomment %}
-   
-
-
 </head>
 <body>
-
 <header class="header">
-   
    <section class="flex">
-
       <a href="{% url 'web:home' %}" class="logo">EduStack</a>
-
       <form action="" method="post" class="search-form">
          <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
          <button type="submit" class="fas fa-search"></button>
@@ -37,23 +26,25 @@
          <div id="user-btn" class="fas fa-user"></div>
          <div id="toggle-btn" class="fas fa-sun"></div>
       </div>
-{% for p in details %}
+
 <form action="{% url "web:create-checkout-session" %}" method="POST">
    {% csrf_token %}
       <div class="profile">
+         {% if user.profile %}
          <img src="{{p.image.url}}" class="image" alt="">
-         <h3 class="name">{{p.name}}</h3>
+         {% else %}
+         <img src="{% static 'web/images/pic-1.jpg' %}" class="image" alt="">
+         {% endif %}
+         <h3 class="name">{{request.user}}</h3>
          <p class="role">student</p>
          <a href="{% url 'web:profile' %}" class="btn">view profile</a>
          <div class="flex-btn">
             <a href="{% url 'web:student_signin' %}" class="option-btn">logout</a>
             <button type='submit' class="option-btn">Pay EMI</button>
-            {% comment %} <a type="submit" href="" class="option-btn">Pay EMI</a> {% endcomment %}
            
          </div>
       </div>
    </form>
-      {% endfor %}
    </section>
 
 </header>   
@@ -63,14 +54,16 @@
    <div id="close-btn">
       <i class="fas fa-times"></i>
    </div>
-{% for p in details %}
    <div class="profile">
-      <img src="{{p.image.url}}" class="image" alt="">
-      <h3 class="name">{{p.name}}</h3>
+      {% if user.profile %}
+      <img src="{{object.image.url}}" class="image" alt="">
+      {% else %}
+      <img src="{% static 'web/images/pic-1.jpg' %}" class="image" alt="">
+      {% endif %}
+      <h3 class="name">{{request.user}}</h3>
       <p class="role">student</p>
       <a href="{% url 'web:profile' %}" class="btn">view profile</a>
    </div>
-   {% endfor %}
    <nav class="navbar">
       <a href="{% url 'web:home' %}"><i class="fas fa-home"></i><span>Home</span></a>
       <a href="{% url 'web:about' %}"><i class="fas fa-question"></i><span>About</span></a>
@@ -78,20 +71,14 @@
       <a href="{% url 'web:teachers' %}"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
       <a href="{% url 'web:contact' %}"><i class="fas fa-headset"></i><span>Contact Us</span></a>
    </nav>
-
 </div>
 {% block content %}
 {% endblock  %}
 <footer class="footer">
-
     &copy; copyright @ 2022 by <span>Midhlaj Rahman</span>
- 
  </footer>
- 
  <!-- custom js file link  -->
  <script src="{% static 'web/script/script.js' %}"></script>
- 
-    
  </body>
  <script src="https://js.stripe.com/v3/"></script> 
  </html>

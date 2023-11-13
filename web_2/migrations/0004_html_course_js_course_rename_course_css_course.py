@@ -4,38 +4,53 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web_2', '0003_rename_course_1_course'),
+        ("web_2", "0003_rename_course_1_course"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='html_course',
+            name="html_course",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('authername', models.CharField(max_length=50)),
-                ('auther_image', models.ImageField(upload_to='media')),
-                ('date', models.CharField(max_length=50)),
-                ('howmany_videos', models.CharField(max_length=50)),
-                ('video_title', models.CharField(max_length=50)),
-                ('thumbnail', models.ImageField(upload_to='media')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("authername", models.CharField(max_length=50)),
+                ("auther_image", models.ImageField(upload_to="media")),
+                ("date", models.CharField(max_length=50)),
+                ("howmany_videos", models.CharField(max_length=50)),
+                ("video_title", models.CharField(max_length=50)),
+                ("thumbnail", models.ImageField(upload_to="media")),
             ],
         ),
         migrations.CreateModel(
-            name='js_course',
+            name="js_course",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('authername', models.CharField(max_length=50)),
-                ('auther_image', models.ImageField(upload_to='media')),
-                ('date', models.CharField(max_length=50)),
-                ('howmany_videos', models.CharField(max_length=50)),
-                ('video_title', models.CharField(max_length=50)),
-                ('thumbnail', models.ImageField(upload_to='media')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("authername", models.CharField(max_length=50)),
+                ("auther_image", models.ImageField(upload_to="media")),
+                ("date", models.CharField(max_length=50)),
+                ("howmany_videos", models.CharField(max_length=50)),
+                ("video_title", models.CharField(max_length=50)),
+                ("thumbnail", models.ImageField(upload_to="media")),
             ],
         ),
         migrations.RenameModel(
-            old_name='course',
-            new_name='css_course',
+            old_name="course",
+            new_name="css_course",
         ),
     ]

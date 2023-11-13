@@ -4,60 +4,59 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0015_playlist_playlist_number'),
+        ("web", "0015_playlist_playlist_number"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='playlist',
-            old_name='playlist_number',
-            new_name='date',
+            model_name="playlist",
+            old_name="playlist_number",
+            new_name="date",
         ),
         migrations.RenameField(
-            model_name='playlist',
-            old_name='title',
-            new_name='how_many_videos',
+            model_name="playlist",
+            old_name="title",
+            new_name="how_many_videos",
         ),
         migrations.RenameField(
-            model_name='playlist',
-            old_name='thumbnail',
-            new_name='topic_thumb',
+            model_name="playlist",
+            old_name="thumbnail",
+            new_name="topic_thumb",
         ),
         migrations.AddField(
-            model_name='playlist',
-            name='topic_description',
+            model_name="playlist",
+            name="topic_description",
             field=models.CharField(default=1, max_length=100),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='playlist',
-            name='topic_title',
+            model_name="playlist",
+            name="topic_title",
             field=models.CharField(default=1, max_length=50),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='playlist',
-            name='tutor_image',
-            field=models.ImageField(default=1, upload_to='media'),
+            model_name="playlist",
+            name="tutor_image",
+            field=models.ImageField(default=1, upload_to="media"),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='playlist',
-            name='tutor_name',
+            model_name="playlist",
+            name="tutor_name",
             field=models.CharField(default=1, max_length=50),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='playlist',
-            name='video_thumbnail',
-            field=models.ImageField(default=1, upload_to='media'),
+            model_name="playlist",
+            name="video_thumbnail",
+            field=models.ImageField(default=1, upload_to="media"),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='playlist',
-            name='video_title',
+            model_name="playlist",
+            name="video_title",
             field=models.CharField(default=1, max_length=50),
             preserve_default=False,
         ),

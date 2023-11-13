@@ -1,65 +1,65 @@
 from django.contrib import admin
-from . models import html_course
-from . models import css_course
-from . models import js_course
-from . models import bootstrap_course
-from . models import react_course
-from . models import python_course
-from . models import psql_course
-from . models import flutter_course
-from . models import contact_form
-from . models import selectbox_course
-from . models import teacher_profile
-from . models import html_playlist
-from . models import css_playlist
-from . models import js_playlist
-from . models import bootstrap_playlist
-from . models import react_playlist
-from . models import python_playlist
-from . models import psql_playlist
-from . models import playlist_head
-from . models import watch_video
-from . models import css_watch_video
-from . models import js_watch_video
-from . models import bootstrap_watch_video
-from . models import react_watch_video
-from . models import python_watch_video
-from . models import psql_watch_video
 
+from .models import (
+    BootstrapCourse,
+    BootstrapPlaylist,
+    BootstrapWatchVideo,
+    ContactForm,
+    CssCourse,
+    CssPlaylist,
+    CssWatchVideo,
+    HtmlCourse,
+    HtmlPlaylist,
+    JsCourse,
+    JsPlaylist,
+    JsWatchVideo,
+    PlaylistHead,
+    ProfileDetails,
+    PsqlCourse,
+    PsqlPlaylist,
+    PsqlWatchVideo,
+    PythonCourse,
+    PythonPlaylist,
+    PythonWatchVideo,
+    ReactCourse,
+    ReactPlaylist,
+    ReactWatchVideo,
+    SelectboxCourse,
+    TeacherProfile,
+    WatchVideo,
+)
 
-from . models import profile_details
 # from . models import signup_form
 
 # Register your models here.
-admin.site.register(html_course)
-admin.site.register(html_playlist)
-admin.site.register(css_course)
-admin.site.register(css_playlist)
-admin.site.register(js_course)
-admin.site.register(js_playlist)
-admin.site.register(bootstrap_course)
-admin.site.register(bootstrap_playlist)
-admin.site.register(react_course)
-admin.site.register(react_playlist)
-admin.site.register(python_course)
-admin.site.register(python_playlist)
-admin.site.register(psql_course)
-admin.site.register(psql_playlist)
+admin.site.register(HtmlCourse)
+admin.site.register(HtmlPlaylist)
+admin.site.register(CssCourse)
+admin.site.register(CssPlaylist)
+admin.site.register(JsCourse)
+admin.site.register(JsPlaylist)
+admin.site.register(BootstrapCourse)
+admin.site.register(BootstrapPlaylist)
+admin.site.register(ReactCourse)
+admin.site.register(ReactPlaylist)
+admin.site.register(PythonCourse)
+admin.site.register(PythonPlaylist)
+admin.site.register(PsqlCourse)
+admin.site.register(PsqlPlaylist)
 
 # admin.site.register(flutter_course)
-admin.site.register(contact_form)
-admin.site.register(selectbox_course)
-admin.site.register(teacher_profile)
+admin.site.register(ContactForm)
+admin.site.register(SelectboxCourse)
+admin.site.register(TeacherProfile)
 
 
-admin.site.register(playlist_head)
-admin.site.register(watch_video)
-admin.site.register(css_watch_video)
-admin.site.register(js_watch_video)
-admin.site.register(bootstrap_watch_video)
-admin.site.register(react_watch_video)
-admin.site.register(python_watch_video)
-admin.site.register(psql_watch_video)
+admin.site.register(PlaylistHead)
+admin.site.register(WatchVideo)
+admin.site.register(CssWatchVideo)
+admin.site.register(JsWatchVideo)
+admin.site.register(BootstrapWatchVideo)
+admin.site.register(ReactWatchVideo)
+admin.site.register(PythonWatchVideo)
+admin.site.register(PsqlWatchVideo)
 
-admin.site.register(profile_details)
-# admin.site.register(signup_form)
+admin.site.register(ProfileDetails)

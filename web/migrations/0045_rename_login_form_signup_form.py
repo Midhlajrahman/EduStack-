@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0044_alter_login_form_phone_number'),
+        ("web", "0044_alter_login_form_phone_number"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='login_form',
-            new_name='signup_form',
+            old_name="login_form",
+            new_name="signup_form",
         ),
     ]

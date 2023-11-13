@@ -1,85 +1,9 @@
 {% extends "web/web_dev/partials/base.html" %}
 {% load static %}
 {% block content %}
-{% comment %} <!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>video playlist</title>
-
-   <!-- font awesome cdn link  -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="{% static 'web/css/style.css' %}">
-
-</head>
-<body>
-
-<header class="header">
-   
-   <section class="flex">
-
-      <a href="" class="logo">Educa.</a>
-
-      <form action="" method="post" class="search-form">
-         <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
-         <button type="submit" class="fas fa-search"></button>
-      </form>
-
-      <div class="icons">
-         <div id="menu-btn" class="fas fa-bars"></div>
-         <div id="search-btn" class="fas fa-search"></div>
-         <div id="user-btn" class="fas fa-user"></div>
-         <div id="toggle-btn" class="fas fa-sun"></div>
-      </div>
-
-      <div class="profile">
-         <img src="{% static 'web/images/pic-1.jpg' %}" class="image" alt="">
-         <h3 class="name">shaikh anas</h3>
-         <p class="role">studen</p>
-         <a href="{% url 'web:profile' %}" class="btn">view profile</a>
-         <div class="flex-btn">
-            <a href="{% url 'web:student_signin' %}" class="option-btn">logout</a>
-            {% comment %} <a href="" class="option-btn">register</a> {% endcomment %}
-         {% comment %} </div>
-      </div>
-
-   </section>
-
-</header>   
-
-<div class="side-bar">
-
-   <div id="close-btn">
-      <i class="fas fa-times"></i>
-   </div>
-
-   <div class="profile">
-      <img src="{% static 'web/images/pic-1.jpg' %}" class="image" alt="">
-      <h3 class="name">shaikh anas</h3>
-      <p class="role">studen</p>
-      <a href="{% url 'web:profile' %}" class="btn">view profile</a>
-   </div>
-
-   <nav class="navbar">
-      <a href="{% url 'web:home' %}"><i class="fas fa-home"></i><span>Home</span></a>
-      <a href="{% url 'web:about' %}"><i class="fas fa-question"></i><span>About</span></a>
-      <a href="{% url 'web:topics' %}"><i class="fas fa-graduation-cap"></i><span>Topics</span></a>
-      <a href="{% url 'web:teachers' %}"><i class="fas fa-chalkboard-user"></i><span>Teachers</span></a>
-      <a href="{% url 'web:contact' %}"><i class="fas fa-headset"></i><span>Contact Us</span></a>
-   </nav>
-
-</div>  {% endcomment %}
-
 <section class="playlist-details">
-
    <h1 class="heading">playlist details</h1>
-
    <div class="row">
-      
       <div class="column">
          <form action="" method="post" class="save-playlist">
             <button type="submit"><i class="far fa-bookmark"></i> <span>save playlist</span></button>
@@ -106,13 +30,9 @@
          </div>
       </div>
    </div>
-
 </section>
-
 <section class="playlist-videos">
-   
    <h1 class="heading">playlist videos</h1>
-  
    <div class="box-container">
      {% for p in play %} 
       <a class="box" href="{% url "web:watch_video" p.id %}">
@@ -120,62 +40,8 @@
          <img src="{{p.video_thumbnail.url}}" alt="">
          <h3>{{p.video_title}}</h3>
       </a>
-      
       {% endfor %} 
-
-     
-      {% comment %} {% for p in play_2 %} 
-      <a class="box" href="{% url "web:watch_video" p.id %}">
-         <i class="fas fa-play"></i>
-         <img src="{{p.video_thumbnail.url}}" alt="">
-         <h3>{{p.video_title}}</h3>
-      </a>
-      
-      {% endfor %}  
- 
-      {% for p in play_3 %} 
-      <a class="box" href="{% url "web:watch_video" p.id %}">
-         <i class="fas fa-play"></i>
-         <img src="{{p.video_thumbnail.url}}" alt="">
-         <h3>{{p.video_title}}</h3>
-      </a>
-      
-      {% endfor %}   {% endcomment %}
-
-      {% comment %} <a class="box" href="{% url 'watch_video_2' %}">
-         <i class="fas fa-play"></i>
-         <img src="{% static 'web/images/js_2.png' %}" alt="">
-         <h3>complete Javascript tutorial (part 02)</h3>
-      </a>
-
-      <a class="box" href="{% url 'watch_video_3' %}">
-         <i class="fas fa-play"></i>
-         <img src="{% static 'web/images/js_3.png' %}" alt="">
-         <h3>complete Javascript tutorial (part 03)</h3>
-      </a>
-
-      <a class="box" href="{% url 'watch_video_4' %}">
-         <i class="fas fa-play"></i>
-         <img src="{% static 'web/images/js_4.png' %}" alt="">
-         <h3>complete Javascript tutorial (part 04)</h3>
-      </a>
-
-      <a class="box" href="{% url 'watch_video_5' %}">
-         <i class="fas fa-play"></i>
-         <img src="{% static 'web/images/js_5.png' %}" alt="">
-         <h3>complete Javascript tutorial (part 05)</h3>
-      </a>
-
-      <a class="box" href="{% url 'watch_video_6' %}">
-         <i class="fas fa-play"></i>
-         <img src="{% static 'web/images/js_6.png' %}" alt="">
-         <h3>complete Javascript tutorial (part 06)</h3>
-      </a> {% endcomment %}
-       
    </div>
-   
-   
-
 </section>
 
 

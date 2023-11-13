@@ -4,13 +4,12 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0048_signup_form_course'),
+        ("web", "0048_signup_form_course"),
     ]
 
     operations = [
         migrations.DeleteModel(
-            name='signup_form',
+            name="signup_form",
         ),
     ]

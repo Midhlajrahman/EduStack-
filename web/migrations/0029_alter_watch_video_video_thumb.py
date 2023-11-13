@@ -4,15 +4,14 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0028_alter_bootstrap_playlist_video_thumbnail'),
+        ("web", "0028_alter_bootstrap_playlist_video_thumbnail"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='watch_video',
-            name='video_thumb',
-            field=models.FileField(upload_to='media'),
+            model_name="watch_video",
+            name="video_thumb",
+            field=models.FileField(upload_to="media"),
         ),
     ]

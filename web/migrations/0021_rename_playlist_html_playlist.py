@@ -4,14 +4,13 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0020_remove_playlist_topic_description_and_more'),
+        ("web", "0020_remove_playlist_topic_description_and_more"),
     ]
 
     operations = [
         migrations.RenameModel(
-            old_name='playlist',
-            new_name='html_playlist',
+            old_name="playlist",
+            new_name="html_playlist",
         ),
     ]

@@ -4,25 +4,24 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0050_rename_email_profile_details_student_email_and_more'),
+        ("web", "0050_rename_email_profile_details_student_email_and_more"),
     ]
 
     operations = [
         migrations.RenameField(
-            model_name='profile_details',
-            old_name='student_email',
-            new_name='email',
+            model_name="profile_details",
+            old_name="student_email",
+            new_name="email",
         ),
         migrations.RenameField(
-            model_name='profile_details',
-            old_name='student_image',
-            new_name='image',
+            model_name="profile_details",
+            old_name="student_image",
+            new_name="image",
         ),
         migrations.RenameField(
-            model_name='profile_details',
-            old_name='student_name',
-            new_name='name',
+            model_name="profile_details",
+            old_name="student_name",
+            new_name="name",
         ),
     ]

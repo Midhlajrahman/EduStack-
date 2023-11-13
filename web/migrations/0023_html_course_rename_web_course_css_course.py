@@ -4,26 +4,33 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('web', '0022_css_playlist'),
+        ("web", "0022_css_playlist"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='html_course',
+            name="html_course",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('authername', models.CharField(max_length=50)),
-                ('auther_image', models.ImageField(upload_to='media')),
-                ('date', models.CharField(max_length=50)),
-                ('howmany_video', models.CharField(max_length=50)),
-                ('video_title', models.CharField(max_length=50)),
-                ('thumbnail', models.ImageField(upload_to='media')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("authername", models.CharField(max_length=50)),
+                ("auther_image", models.ImageField(upload_to="media")),
+                ("date", models.CharField(max_length=50)),
+                ("howmany_video", models.CharField(max_length=50)),
+                ("video_title", models.CharField(max_length=50)),
+                ("thumbnail", models.ImageField(upload_to="media")),
             ],
         ),
         migrations.RenameModel(
-            old_name='web_course',
-            new_name='css_course',
+            old_name="web_course",
+            new_name="css_course",
         ),
     ]
