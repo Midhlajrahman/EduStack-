@@ -3,40 +3,18 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 from django.views.generic import DetailView, TemplateView
-
 import stripe
 from django.conf import settings
 from django.views import View
-
 from .models import (
-    BootstrapCourse,
-    BootstrapPlaylist,
-    BootstrapWatchVideo,
-    ContactForm,
-    CssCourse,
-    CssPlaylist,
-    CssWatchVideo,
-    HtmlCourse,
-    HtmlPlaylist,
-    JsCourse,
-    JsPlaylist,
-    JsWatchVideo,
-    PlaylistHead,
+    Course,
+    # PlaylistHead,
+    Playlist,
+    Video,
+    Contact,
     ProfileDetails,
-    PsqlCourse,
-    PsqlPlaylist,
-    PsqlWatchVideo,
-    PythonCourse,
-    PythonPlaylist,
-    PythonWatchVideo,
-    ReactCourse,
-    ReactPlaylist,
-    ReactWatchVideo,
-    SelectboxCourse,
     TeacherProfile,
-    WatchVideo,
 )
-
 
 def home(request):
     context = {
@@ -56,8 +34,8 @@ def contact(request):
         name = request.POST.get("name")
         email = request.POST.get("email")
         number = request.POST.get("number")
-        msg = request.POST.get("msg")
-        form = ContactForm(name=name, email=email, number=number, msg=msg)
+        message = request.POST.get("msg")
+        form = Contact(name=name, email=email, number=number, msg=message)
         form.save()
          
     return render(request,'web/web_dev/contact.html',context)
@@ -66,196 +44,173 @@ def contact(request):
 class topics(TemplateView):
     template_name="web/web_dev/topics.html"
     model=ProfileDetails
+    model=Course
     
 
     def get_context_data(self, **kwargs) :
         context = super().get_context_data(**kwargs)
-        context["coursu"] = HtmlCourse.objects.all()
-        context["coursu_2"] = CssCourse.objects.all()
-        context["coursu_3"] = JsCourse.objects.all()
-        context["coursu_4"] = BootstrapCourse.objects.all()
-        context["coursu_5"] = ReactCourse.objects.all()
-        context["coursu_6"] = PythonCourse.objects.all()
-        context["coursu_7"] = PsqlCourse.objects.all()
-        context["play"] = HtmlPlaylist.objects.all()
-        context["play_2"] = CssPlaylist.objects.all()
-        context["play_3"] = JsPlaylist.objects.all()
+        
+        context["html_courses"] = Course.object.filter(Course__category="html")
+        context["css_courses"] = Course.object.filter(Course__category="css")
+        context["js_courses"] = Course.object.filter(Course__category="js")
+        context["bootstrap_courses"] = Course.object.filter(Course__category="bootstrap")
+        context["react_courses"] = Course.object.filter(Course__category="react")
+        context["python_courses"] = Course.object.filter(Course__category="python")
+        context["psql_courses"] = Course.object.filter(Course__category="psql")
         context['details'] = ProfileDetails.objects.all()
         
-        
-        
         return context
-
- 
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["coursu"] = HtmlCourse.objects.all()
-        context["coursu_2"] = CssCourse.objects.all()
-        context["coursu_3"] = JsCourse.objects.all()
-        context["coursu_4"] = BootstrapCourse.objects.all()
-        context["coursu_5"] = ReactCourse.objects.all()
-        context["coursu_6"] = PythonCourse.objects.all()
-        context["coursu_7"] = PsqlCourse.objects.all()
-        context["play"] = HtmlPlaylist.objects.all()
-        context["play_2"] = CssPlaylist.objects.all()
-        context["play_3"] = JsPlaylist.objects.all()
-        context["details"] = ProfileDetails.objects.all()
-        return context
-
-    
-
+  
+  
 class PlaylistView(DetailView):
     template_name = "web/web_dev/playlists/playlist.html"
-    model = HtmlPlaylist
-    model = BootstrapPlaylist
-    model = PlaylistHead
-    model = ProfileDetails
+    model = Playlist
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["play"] = HtmlPlaylist.objects.all()
-        context["watch"] = WatchVideo.objects.all()
-        context["list"] = CssPlaylist.objects.all()
-        context["js_list"] = JsPlaylist.objects.all()
-        context["bootstrap_list"] = BootstrapPlaylist.objects.all()
+        context["html_playlist"] = Playlist.objects.filter(category="html")
+        context["watch"] = Video.objects.all()
+        context["css_playlist"] = Playlist.objects.filter(category="css")
+        context["js_playlist"] = Playlist.objects.filter(category="js")
+        context["bootstrap_playlist"] = Playlist.objects.filter(category="bootstrap")
         return context
 
 
-class CssPlaylistView(DetailView):
-    template_name = "web/web_dev/playlists/css_playlist.html"
-    model = CssPlaylist
-    model = PlaylistHead
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["watch"] =WatchVideo.objects.all()
-        context["list"] = CssPlaylist.objects.all()
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class CssPlaylistView(DetailView):
+#     template_name = "web/web_dev/playlists/css_playlist.html"
+#     model = Playlist
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["watch"] =Video.objects.all()
+#         context["css_playlist"] = Playlist.objects.filter(category="css")
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
 
 
-class JsPlaylistView(DetailView):
-    template_name = "web/web_dev/playlists/js_playlist.html"
-    model = JsPlaylist
-    model = PlaylistHead
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["watch"] = WatchVideo.objects.all()
-        context["js_list"] = JsPlaylist.objects.all()
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class JsPlaylistView(DetailView):
+#     template_name = "web/web_dev/playlists/js_playlist.html"
+#     model = Playlist
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["watch"] = Video.objects.all()
+#         context["js_playlist"] = Playlist.objects.filter(category="js")
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
 
 
-class BootstrapPlaylistView(DetailView):
-    template_name = "web/web_dev/playlists/bootstrap_playlist.html"
-    model = BootstrapPlaylist
-    model = PlaylistHead
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["watch"] = WatchVideo.objects.all()
-        context["bootstrap_list"] = BootstrapPlaylist.objects.all()
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class BootstrapPlaylistView(DetailView):
+#     template_name = "web/web_dev/playlists/bootstrap_playlist.html"
+#     model = Playlist
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["watch"] = Video.objects.all()
+#         context["bootstrap_playlist"] = Playlist.objects.filter(category="bootstrap")
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
 
 
-class ReactPlaylistView(DetailView):
-    template_name = "web/web_dev/playlists/react_playlist.html"
-    model = ReactPlaylist
-    model = PlaylistHead
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["watch"] = WatchVideo.objects.all()
-        context["react_list"] = ReactPlaylist.objects.all()
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class ReactPlaylistView(DetailView):
+#     template_name = "web/web_dev/playlists/react_playlist.html"
+#     model = Playlist
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["watch"] = Video.objects.all()
+#         context["react_playlist"] = Playlist.objects.filter(category="react")
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
 
 
-class PythonPlaylistView(DetailView):
-    template_name = "web/web_dev/playlists/react_playlist.html"
-    model = PythonPlaylist
-    model = PlaylistHead
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["watch"] = WatchVideo.objects.all()
-        context["python_list"] = PythonPlaylist.objects.all()
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class PythonPlaylistView(DetailView):
+#     template_name = "web/web_dev/playlists/react_playlist.html"
+#     model = Playlist
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["watch"] = Video.objects.all()
+#         context["python_playlist"] = Playlist.objects.filter(category="python")
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
 
    
 
 
-class PsqlPlaylistView(DetailView):
-    template_name = "web/web_dev/playlists/psql_playlist.html"
-    model = PsqlPlaylist
-    model = PlaylistHead
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["watch"] = WatchVideo.objects.all()
-        context["psql_list"] = PsqlPlaylist.objects.all()
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class PsqlPlaylistView(DetailView):
+#     template_name = "web/web_dev/playlists/psql_playlist.html"
+#     model = Playlist
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["watch"] = Video.objects.all()
+#         context["psql_playlist"] = Playlist.objects.filter(category="psql")
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
     
 
-class WatchVideoView(DetailView):
+class VideoView(DetailView):
     template_name = "web/web_dev/watch_video/watch_video.html"
-    model = WatchVideo
+    model = Video
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["details"] =ProfileDetails.objects.all()
         return context
 
 
-class CssWatchVideoView(DetailView):
-    template_name = "web/web_dev/watch_video/css_watch_video.html"
-    model = CssWatchVideo
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class CssWatchVideoView(DetailView):
+#     template_name = "web/web_dev/watch_video/css_watch_video.html"
+#     model = Video
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
 
 
-class JsWatchVideoView(DetailView):
-    template_name = "web/web_dev/watch_video/js_watch_video.html"
-    model = JsWatchVideo
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class JsWatchVideoView(DetailView):
+#     template_name = "web/web_dev/watch_video/js_watch_video.html"
+#     model = Video
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
     
 
-class BootstrapWatchVideoView(DetailView):
-    template_name = "web/web_dev/watch_video/bootstrap_watch_video.html"
-    model = BootstrapWatchVideo
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class BootstrapWatchVideoView(DetailView):
+#     template_name = "web/web_dev/watch_video/bootstrap_watch_video.html"
+#     model = Video
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
 
 
-class ReactWatchVideoView(DetailView): 
-    template_name = "web/web_dev/watch_video/react_watch_video.html"
-    model = ReactWatchVideo
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["details"] =ProfileDetails.objects.all()
-        return context
+# class ReactWatchVideoView(DetailView): 
+#     template_name = "web/web_dev/watch_video/react_watch_video.html"
+#     model = Video
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["details"] =ProfileDetails.objects.all()
+#         return context
     
 
-class PythonWatchVideoView(DetailView):
-    template_name = "web/web_dev/watch_video/python_watch_video.html"
-    model = PythonWatchVideo
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class PythonWatchVideoView(DetailView):
+#     template_name = "web/web_dev/watch_video/python_watch_video.html"
+#     model = Video
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
     
 
-class PsqlWatchVideoView(DetailView):
-    template_name = "web/web_dev/watch_video/psql_watch_video.html"
-    model = PsqlWatchVideo
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["details"] = ProfileDetails.objects.all()
-        return context
+# class PsqlWatchVideoView(DetailView):
+#     template_name = "web/web_dev/watch_video/psql_watch_video.html"
+#     model = Video
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["details"] = ProfileDetails.objects.all()
+#         return context
 
 
 def profile(request):
@@ -288,36 +243,6 @@ def update(request):
     return render(request, "web/web_dev/update.html", context)
 
 
-def watch_video_1(request):
-    context = {"details": ProfileDetails.objects.all()}
-    return render(request, "web/web_dev/watch_video/watch_video_1.html", context)
-
-
-def watch_video_2(request):
-    context = {"details": ProfileDetails.objects.all()}
-    return render(request, "web/web_dev/watch_video/watch_video_2.html", context)
-
-
-def watch_video_3(request):
-    context = {"details": ProfileDetails.objects.all()}
-    return render(request, "web/web_dev/watch_video/watch_video_3.html", context)
-
-
-def watch_video_4(request):
-    context = {"details": ProfileDetails.objects.all()}
-    return render(request, "web/web_dev/watch_video/watch_video_4.html", context)
-
-
-def watch_video_5(request):
-    context = {"details": ProfileDetails.objects.all()}
-    return render(request, "web/web_dev/watch_video/watch_video_5.html", context)
-
-
-def watch_video_6(request):
-    context = {"details": ProfileDetails.objects.all()}
-    return render(request, "web/web_dev/watch_video/watch_video_6.html", context)
-
-
 def success(request):
     return render(request, "web/web_dev/payment_animation/success.html")
 
@@ -327,10 +252,6 @@ def cancel(request):
 
 
 def student_signin(request):
-    context = {
-        "selectbox": SelectboxCourse.objects.all(),
-        "details": ProfileDetails.objects.all(),
-    }
 
     if request.method == "POST":
         email = request.POST.get("email")
@@ -349,7 +270,7 @@ def student_signin(request):
             return redirect("web_2:d_home")
         else:
             return redirect("web:student_signin")
-    return render(request, "web/signin/student_signin.html", context)
+    return render(request, "web/signin/student_signin.html")
 
 
 def signup(request):
