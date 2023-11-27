@@ -39,49 +39,19 @@ class Playlist1(models.Model):
     video_thumbnail = models.FileField(upload_to="media")
     video_title = models.CharField(max_length=50)
 
-
-class Playlist2(models.Model):
-    video_thumbnail = models.FileField(upload_to="media")
-    video_title = models.CharField(max_length=50)
-
-
-class Playlist3(models.Model):
-    video_thumbnail = models.FileField(upload_to="media")
-    video_title = models.CharField(max_length=50)
-
-
 #  course models
-class Course1(models.Model):
+class Course(models.Model):
     authername = models.CharField(max_length=50)
     auther_image = models.ImageField(upload_to="media")
     date = models.CharField(max_length=50)
     howmany_videos = models.CharField(max_length=50)
     video_title = models.CharField(max_length=50)
     thumbnail = models.ImageField(upload_to="media")
-
-
-class Course2(models.Model):
-    authername = models.CharField(max_length=50)
-    auther_image = models.ImageField(upload_to="media")
-    date = models.CharField(max_length=50)
-    howmany_videos = models.CharField(max_length=50)
-    video_title = models.CharField(max_length=50)
-    thumbnail = models.ImageField(upload_to="media")
-
-
-class Course3(models.Model):
-    authername = models.CharField(max_length=50)
-    auther_image = models.ImageField(upload_to="media")
-    date = models.CharField(max_length=50)
-    howmany_videos = models.CharField(max_length=50)
-    video_title = models.CharField(max_length=50)
-    thumbnail = models.ImageField(upload_to="media")
-
 
 # watch video section
 
 
-class DWatchVideo(models.Model):
+class DVideo(models.Model):
     video = models.FileField(upload_to="media")
     video_thumb = models.FileField(upload_to="media")
     title = models.CharField(max_length=100)
@@ -90,22 +60,3 @@ class DWatchVideo(models.Model):
     tutor_position = models.CharField(max_length=50)
     description = models.CharField(max_length=150)
 
-
-class DWatchVideo2(models.Model):
-    video = models.FileField(upload_to="media")
-    video_thumb = models.FileField(upload_to="media")
-    title = models.CharField(max_length=100)
-    tutor_name = models.CharField(max_length=50)
-    tutor_image = models.FileField(upload_to="media")
-    tutor_position = models.CharField(max_length=50)
-    description = models.CharField(max_length=150)
-
-
-class DWatchVideo3(models.Model):
-    video = models.FileField(upload_to="media")
-    video_thumb = models.FileField(upload_to="media")
-    title = models.CharField(max_length=100)
-    tutor_name = models.CharField(max_length=50)
-    tutor_image = models.FileField(upload_to="media")
-    tutor_position = models.CharField(max_length=50)
-    description = models.CharField(max_length=150)

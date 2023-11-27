@@ -5,21 +5,13 @@ import stripe
 from django.conf import settings
 from django.views import View
 
-# watc video section
-# playist section
-# sidebar section
-# coure section
 from .models import (
     ContactForm,
     Course1,
     Course2,
     DTeacherProfile,
     DWatchVideo,
-    DWatchVideo2,
-    DWatchVideo3,
     Playlist1,
-    Playlist2,
-    Playlist3,
     ProfileForm,
 )
 
@@ -33,17 +25,6 @@ def d_about(request):
     context = {"updates": ProfileForm.objects.all()}
     return render(request, "web/digital_marketing/d_about.html", context)
 
-
-# def d_contact(request):
-#     context = {"updates": ProfileForm.objects.all()}
-#     if request.method == "POST":
-#         name = request.POST.get("name")
-#         email = request.POST.get("email")
-#         number = request.POST.get("number")
-#         msg = request.POST.get("msg")
-#         form = ContactForm(name=name, email=email, number=number, msg=msg)
-#         form.save()
-#     return render(request, "web/digital_marketing/d_contact.html ", context)
 
 def d_contact(request):
     context = {"updates": ProfileForm.objects.all()}
@@ -107,76 +88,16 @@ class Playlist1View(DetailView):
         return context
 
 
-class Playlist2View(DetailView):
-    template_name = "web/digital_marketing/playlist/playlist_2.html"
-    model = Playlist2
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["d_play_2"] = Playlist2.objects.all()
-        context["updates"] = ProfileForm.objects.all()
-        return context
-
-
-class Playlist3View(DetailView):
-    template_name = "web/digital_marketing/playlist/playlist_3.html"
-    model = Playlist3
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["d_play_3"] = Playlist3.objects.all()
-        context["updates"] = ProfileForm.objects.all()
-        return context
-
-
-def playlist_4(request):
-    return render(request, "web/digital_marketing/playlist/playlist_4.html")
-
-
-def playlist_5(request):
-    return render(request, "web/digital_marketing/playlist/playlist_5.html")
-
-
-def playlist_6(request):
-    return render(request, "web/digital_marketing/playlist/playlist_6.html")
-
-
-def playlist_7(request):
-    return render(request, "web/digital_marketing/playlist/playlist_7.html")
-
-
-class DWatchVideoView(DetailView):
+class DVideoView(DetailView):
     template_name = "web/digital_marketing/watch_video/d_watch_video.html"
     model = DWatchVideo
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["updates"] = ProfileForm.objects.all()
         return context
-
-
-class DWatchVideo2View(DetailView):
-    template_name = "web/digital_marketing/watch_video/d_watch_video_2.html"
-    model = DWatchVideo2
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["updates"] = ProfileForm.objects.all()
-        return context
-
-
-class DWatchVideo3View(DetailView):
-    template_name = "web/digital_marketing/watch_video/d_watch_video_2.html"
-    model = DWatchVideo3
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["updates"] = ProfileForm.objects.all()
-        return context
-
-
+    
+    
 stripe.api_key = settings.STRIPE_SECRET_KEY
-
 
 class CreateStripeCheckoutSessionView1(View):
     """

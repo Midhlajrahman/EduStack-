@@ -18,12 +18,9 @@ from django.urls import  path
 from . import views
 from .views import (
     CreateStripeCheckoutSessionView1,
-    DWatchVideo2View,
-    DWatchVideo3View,
-    DWatchVideoView,
+    DVideoView,
     Playlist1View,
-    Playlist2View,
-    Playlist3View,
+
 )
 
 app_name = "web_2"
@@ -36,24 +33,9 @@ urlpatterns = [
     path("d_update", views.d_update, name="d_update"),
     path("d_topics" ,views.d_topics_view,name='d_topics' ),
     # watch video
-    path("d_watch_video/ <int:pk>", DWatchVideoView.as_view(), name="d_watch_video"),
-    path(
-        "d_watch_video_2/ <int:pk>",
-        DWatchVideo2View.as_view(),
-        name="d_watch_video_2",
-    ),
-    path(
-        "d_watch_video_3/ <int:pk>",
-        DWatchVideo3View.as_view(),
-        name="d_watch_video_3",
-    ),
+    path("d_video/ <int:pk>", DVideoView.as_view(), name="d_video"),
     path("playlist_1/<int:pk>", Playlist1View.as_view(), name="playlist_1"),
-    path("playlist_2/<int:pk>", Playlist2View.as_view(), name="playlist_2"),
-    path("playlist_3/<int:pk>", Playlist3View.as_view(), name="playlist_3"),
-    path("playlist_4", views.playlist_4, name="playlist_4"),
-    path("playlist_5", views.playlist_5, name="playlist_5"),
-    path("playlist_6", views.playlist_6, name="playlist_6"),
-    path("playlist_7", views.playlist_7, name="playlist_7"),
+
     path(
         "create-checkout-session1",
         CreateStripeCheckoutSessionView1.as_view(),
