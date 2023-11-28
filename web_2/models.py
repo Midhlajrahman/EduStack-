@@ -40,7 +40,7 @@ class Playlist1(models.Model):
     video_title = models.CharField(max_length=50)
 
 #  course models
-class Course(models.Model):
+class Course1(models.Model):
     authername = models.CharField(max_length=50)
     auther_image = models.ImageField(upload_to="media")
     date = models.CharField(max_length=50)
@@ -51,7 +51,7 @@ class Course(models.Model):
 # watch video section
 
 
-class DVideo(models.Model):
+class DWatchVideo(models.Model):
     video = models.FileField(upload_to="media")
     video_thumb = models.FileField(upload_to="media")
     title = models.CharField(max_length=100)

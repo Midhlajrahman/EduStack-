@@ -4,7 +4,7 @@ from . import views
 from .views import (
     CreateStripeCheckoutSessionView,
     PlaylistView,
-    topics,
+    TopicsView,
     WatchVideoView,
 )
 
@@ -13,7 +13,7 @@ urlpatterns = [
     path("home", views.home, name="home"),
     path("about", views.about, name="about"),
     path("contact", views.contact, name="contact"),
-    path("topics", topics.as_view(), name="topics"),
+    path("topics",     TopicsView.as_view(), name="topics"),
     path("profile", views.profile, name="profile"),
     path("playlist/<int:pk>", PlaylistView.as_view(), name="playlist"),
     # watch video

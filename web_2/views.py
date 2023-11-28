@@ -8,7 +8,7 @@ from django.views import View
 from .models import (
     ContactForm,
     Course1,
-    Course2,
+
     DTeacherProfile,
     DWatchVideo,
     Playlist1,

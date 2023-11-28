@@ -41,7 +41,7 @@ def contact(request):
     return render(request,'web/web_dev/contact.html',context)
 
 
-class Topics(TemplateView):
+class TopicsView(TemplateView):
     template_name="web/web_dev/topics.html"
 
     
@@ -75,7 +75,7 @@ class PlaylistView(DetailView):
         return context
     
 
-class VideoView(DetailView):
+class WatchVideoView(View):
     template_name = "web/web_dev/watch_video/watch_video.html"
     model = Video
     def get_context_data(self, **kwargs):

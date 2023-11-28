@@ -23,34 +23,11 @@ class Course(models.Model):
         return str(self.video_title)
 
 
-class PlaylistHead(models.Model):
-    
-    PLAYLISTHEAD_CHOICES = (
-        ("html" , "html"),
-        ("css" , "css"),
-        ("js" , "js"),
-        ("bootstrap" , "bootstrap"),
-        ("react" , "react"),
-        ("python" , "python"),
-        ("psql" , "psql"),
+from django.db import models
 
-    )
-    Playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)  
-    topic_thumb = models.ImageField(upload_to="media")
-    how_many_videos = models.CharField(max_length=50)
-    tutor_image = models.ImageField(upload_to="media")
-    tutor_name = models.CharField(max_length=50)
-    date = models.CharField(max_length=50)
-    topic_title = models.CharField(max_length=100)
-    topic_description = models.CharField(max_length=100)
-    category = models.CharField(max_length=50 , choices=PLAYLISTHEAD_CHOICES)
-    
-    def __str__(self):
-        return str(self.topic_title)
 
 
 class Playlist(models.Model):
-    
     PLAYLIST_CHOICES = (
         ("html" , "html"),
         ("css" , "css"),
@@ -59,19 +36,38 @@ class Playlist(models.Model):
         ("react" , "react"),
         ("python" , "python"),
         ("psql" , "psql"),
-
     )
-    Course = models.ForeignKey(Course, on_delete=models.CASCADE)  
+    Course = models.ForeignKey(Course, on_delete=models.CASCADE)
     video_thumbnail = models.ImageField(upload_to="media")
     video_title = models.CharField(max_length=50)
-    category = models.CharField(max_length=50 , choices=PLAYLIST_CHOICES)
-    
+    category = models.CharField(max_length=50, choices=PLAYLIST_CHOICES)
+
     def __str__(self):
         return str(self.video_title)
-    
-    
 
-    
+class PlaylistHead(models.Model):
+    PLAYLISTHEAD_CHOICES = (
+        ("html" , "html"),
+        ("css" , "css"),
+        ("js" , "js"),
+        ("bootstrap" , "bootstrap"),
+        ("react" , "react"),
+        ("python" , "python"),
+        ("psql" , "psql"),
+    )
+    Playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
+    topic_thumb = models.ImageField(upload_to="media")
+    how_many_videos = models.CharField(max_length=50)
+    tutor_image = models.ImageField(upload_to="media")
+    tutor_name = models.CharField(max_length=50)
+    date = models.CharField(max_length=50)
+    topic_title = models.CharField(max_length=100)
+    topic_description = models.CharField(max_length=100)
+    category = models.CharField(max_length=50, choices=PLAYLISTHEAD_CHOICES)
+
+    def __str__(self):
+        return str(self.topic_title)
+
     
 class Video(models.Model):
     VIDEO_CHOICES = (
