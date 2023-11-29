@@ -1,29 +1,28 @@
-{% extends "web/web_dev/partials/base.html" %}
+{% extends 'web/web_dev/partials/base.html' %}
 {% load static %}
 {% block content %}
-<section class="watch-video">
-   <div class="video-container">
-      {% comment %} <!-- Local Video -->
-      <div class="video">
-         <video src="{{ object.video.url }}" controls poster="{{ object.video_thumb.url }}" id="video"></video>
-      </div> {% endcomment %}
-      <!-- YouTube Video -->
+  <section class="watch-video">
+    <div class="video-container">
       <div class="video" id="video">
-         <iframe width="1119" height="543" src="{{object.video}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <iframe width="1119" height="543" src="{{ object.video }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <h3 class="title">{{ object.title }}</h3>
       <div class="info">
-         <p class="date"><i class="fas fa-calendar"></i><span>{{ object.date }}</span></p>
-         <p class="date"><i class="fas fa-heart"></i><span>44 likes</span></p>
+        <p class="date">
+          <i class="fas fa-calendar"></i><span>{{ object.date }}</span>
+        </p>
+        <p class="date">
+          <i class="fas fa-heart"></i><span>44 likes</span>
+        </p>
       </div>
       <div class="tutor">
-         <img src="{{ object.tutor_image.url }}" alt="">
-         <div>
-            <h3>{{ object.tutor_name }}</h3>
-            <span>{{ object.tutor_position }}</span>
-         </div>
+        <img src="{{ object.tutor_image.url }}" alt="" />
+        <div>
+          <h3>{{ object.tutor_name }}</h3>
+          <span>{{ object.tutor_position }}</span>
+        </div>
       </div>
       <p class="description">{{ object.description }}</p>
-   </div>
-</section>
+    </div>
+  </section>
 {% endblock %}

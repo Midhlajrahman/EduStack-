@@ -14,10 +14,8 @@ from .models import (
     PlaylistHead,
     Playlist,
     Video,
-    Contact,
     ProfileDetails,
     TeacherProfile,
-    
 )
 
 def home(request):

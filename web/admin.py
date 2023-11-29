@@ -41,8 +41,4 @@ class ProfileDetailsAdmin(admin.ModelAdmin):
     # list_display = ('name', 'email', 'image')
     pass
 
-# @admin.register(Topic)
-# class ContactAdmin(admin.ModelAdmin):
-#     # list_display = ('name', 'email', 'number', 'message')
-#     pass
 

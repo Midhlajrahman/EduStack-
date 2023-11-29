@@ -1,41 +1,41 @@
-{% extends "web/web_dev/partials/base.html" %}
+{% extends 'web/web_dev/partials/base.html' %}
 {% load static %}
 {% block content %}
-<link rel="stylesheet" href="{% static 'web/css/style4.css' %}">
-<section class="teachers">
-   <h1 class="heading">expert teachers</h1>
-   <form action="" method="post" class="search-tutor">
-      <input type="text" name="search_box" placeholder="search tutors..." required maxlength="100">
+  <link rel="stylesheet" href="{% static 'web/css/style4.css' %}" />
+  <section class="teachers">
+    <h1 class="heading">expert teachers</h1>
+    <form action="" method="post" class="search-tutor">
+      <input type="text" name="search_box" placeholder="search tutors..." required maxlength="100" />
       <button type="submit" class="fas fa-search" name="search_tutor"></button>
-   </form>
-      <div class="box-container">
+    </form>
+    <div class="box-container">
       {% for p in t_profu %}
-      <div class="container" class="col">
-         <div class="card">
-             <div class="card__1">
-                 <div class="ham">
-                     <i class="fa-solid fa-bars-staggered"></i>
-                     <i class="fa-solid fa-gear"></i>
-                 </div>
-                 <img src="{{p.teacher_image.url}}" alt="">
-                 <div class="content">
-                     <h1>{{p.teacher_name}}</h1>
-                     <p>{{p.teacher_position}}</p>
-                 </div>
-                 <div class="social">
-                     <i class="fa-brands fa-instagram" href="{{p.insta_url}}"><a href=""></a></i>
-                     <i class="fa-brands fa-telegram" href="{{p.wp_url}}"></i>
-                     <i class="fa-brands fa-linkedin" href="{{p.linkedin_url}}"></i>
-                 </div>
-                 <a href="" class="btn">Follow</a>
-             </div>
-             <div class="card__2">
-                 <p>Learn more about  Coding</p>
-                 <i class="fa-solid fa-arrow-down"></i>
-             </div>            
-         </div>
-     </div>
-     {% endfor %}
-   </div>
-</section>
-{% endblock  %}
+        <div class="container" class="col">
+          <div class="card">
+            <div class="card__1">
+              <div class="ham">
+                <i class="fa-solid fa-bars-staggered"></i>
+                <i class="fa-solid fa-gear"></i>
+              </div>
+              <img src="{{ p.teacher_image.url }}" alt="" />
+              <div class="content">
+                <h1>{{ p.teacher_name }}</h1>
+                <p>{{ p.teacher_position }}</p>
+              </div>
+              <div class="social">
+                <i class="fa-brands fa-instagram" href="{{ p.insta_url }}"><a href=""></a></i>
+                <i class="fa-brands fa-telegram" href="{{ p.wp_url }}"></i>
+                <i class="fa-brands fa-linkedin" href="{{ p.linkedin_url }}"></i>
+              </div>
+              <a href="" class="btn">Follow</a>
+            </div>
+            <div class="card__2">
+              <p>Learn more about Coding</p>
+              <i class="fa-solid fa-arrow-down"></i>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

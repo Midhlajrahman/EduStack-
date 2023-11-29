@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Course(models.Model):
     COURSE_CHOICES = (
         ("html" , "html"),
