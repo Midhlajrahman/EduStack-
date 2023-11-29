@@ -108,8 +108,8 @@ i:hover{
 .card__1 a{
     position: absolute;
     top: 66%;
-    text-decoration: none;
-    padding: 8px 40px;
+    /* text-decoration: none;
+    padding: 8px 40px; */
     border-radius: 25px;
     cursor: pointer;
     font-size: 18px;

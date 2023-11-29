@@ -12,7 +12,7 @@ class Course(models.Model):
         ("psql" , "psql"),
 
     )
-    authername = models.CharField(max_length=50)
+    authername = models.CharField(max_length=50, null=True, blank=True)
     auther_image = models.ImageField(upload_to="media")
     date = models.CharField(max_length=50)
     howmany_videos = models.CharField(max_length=50)
@@ -21,41 +21,20 @@ class Course(models.Model):
     
     def __str__(self):
         return str(self.video_title)
-
-
-from django.db import models
-
-
-
-class Playlist(models.Model):
-    PLAYLIST_CHOICES = (
-        ("html" , "html"),
-        ("css" , "css"),
-        ("js" , "js"),
-        ("bootstrap" , "bootstrap"),
-        ("react" , "react"),
-        ("python" , "python"),
-        ("psql" , "psql"),
-    )
-    Course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    video_thumbnail = models.ImageField(upload_to="media")
-    video_title = models.CharField(max_length=50)
-    category = models.CharField(max_length=50, choices=PLAYLIST_CHOICES)
-
-    def __str__(self):
-        return str(self.video_title)
-
+    
+    
 class PlaylistHead(models.Model):
+    
     PLAYLISTHEAD_CHOICES = (
-        ("html" , "html"),
-        ("css" , "css"),
-        ("js" , "js"),
-        ("bootstrap" , "bootstrap"),
-        ("react" , "react"),
-        ("python" , "python"),
-        ("psql" , "psql"),
+        ("html", "html"),
+        ("css", "css"),
+        ("js", "js"),
+        ("bootstrap", "bootstrap"),
+        ("react", "react"),
+        ("python", "python"),
+        ("psql", "psql"),
     )
-    Playlist = models.ForeignKey(Playlist, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
     topic_thumb = models.ImageField(upload_to="media")
     how_many_videos = models.CharField(max_length=50)
     tutor_image = models.ImageField(upload_to="media")
@@ -68,9 +47,30 @@ class PlaylistHead(models.Model):
     def __str__(self):
         return str(self.topic_title)
 
+
+class Playlist(models.Model):
+
+    PLAYLIST_CHOICES = (
+        ("html", "html"),
+        ("css", "css"),
+        ("js", "js"),
+        ("bootstrap", "bootstrap"),
+        ("react", "react"),
+        ("python", "python"),
+        ("psql", "psql"),
+    )
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    playlist_head = models.ForeignKey(PlaylistHead, on_delete=models.CASCADE)
+    video_thumbnail = models.ImageField(upload_to="media")
+    video_title = models.CharField(max_length=50)
+    category = models.CharField(max_length=50, choices=PLAYLIST_CHOICES)
+
+    def __str__(self):
+        return str(self.video_title)
+
     
 class Video(models.Model):
-    VIDEO_CHOICES = (
+    WATCH_CHOICES = (
         ("html" , "html"),
         ("css" , "css"),
         ("js" , "js"),
@@ -81,8 +81,8 @@ class Video(models.Model):
 
     )
      
-    Course = models.ForeignKey(Course,on_delete=models.CASCADE)
-    video = models.FileField(upload_to="media")
+    Playlist = models.ForeignKey(Playlist,on_delete=models.CASCADE)
+    video = models.URLField()
     video_thumb = models.FileField(upload_to="media")
     title = models.CharField(max_length=50)
     date = models.CharField(max_length=50)
@@ -90,7 +90,7 @@ class Video(models.Model):
     tutor_name = models.CharField(max_length=50)
     tutor_position = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
-    category = models.CharField(max_length=50 , choices=VIDEO_CHOICES)
+    category = models.CharField(max_length=50, choices=WATCH_CHOICES)  # Add this line
     
     def __str__(self):
         return str(self.title)
@@ -100,8 +100,8 @@ class TeacherProfile(models.Model):
     teacher_image = models.ImageField(upload_to="media")
     teacher_name = models.CharField(max_length=50)
     teacher_position = models.CharField(max_length=50)
-    insta_url = models.CharField(max_length=50)
-    linkedin_url = models.CharField(max_length=50)
+    insta_url = models.URLField(null=True ,  blank=True)
+    linkedin_url = models.URLField()
     
     def __str__(self):
         return str(self.teacher_name)
@@ -120,8 +120,6 @@ class Contact(models.Model):
 class ProfileDetails(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
-    image = models.FileField(blank=True, null=True, upload_to="images")
-    
-    def __str__(self):
-        return str(self.name)
+    image = models.ImageField(blank=True, null=True, upload_to="images")  # Change this line
+
     

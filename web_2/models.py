@@ -6,9 +6,9 @@ class DTeacherProfile(models.Model):
     teacher_image = models.ImageField(upload_to="media")
     teacher_name = models.CharField(max_length=50)
     teacher_position = models.CharField(max_length=50)
-    insta_url = models.CharField(max_length=50)
-    wp_url = models.CharField(max_length=50)
-    linkedin_url = models.CharField(max_length=50)
+    insta_url = models.URLField()
+    wp_url = models.URLField()
+    linkedin_url = models.URLField()
 
 # contact form
 

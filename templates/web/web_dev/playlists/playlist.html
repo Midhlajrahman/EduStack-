@@ -8,52 +8,40 @@
          <form action="" method="post" class="save-playlist">
             <button type="submit"><i class="far fa-bookmark"></i> <span>save playlist</span></button>
          </form>
-
          <div class="thumb">
-            <img src="{{object.topic_thumb.url}}" alt="">
-            <span>{{object.how_many_videos}}</span>
-         </div>
+            <img src="{{ playlist_head.topic_thumb.url }}" alt="">
+            <span>{{ playlist_head.how_many_videos }}</span>
+        </div>
       </div>
       <div class="column">
          <div class="tutor">
-            <img src="{{object.tutor_image.url}}" alt="">
+            <img src="{{ playlist_head.tutor_image.url }}" alt="">
             <div>
-               <h3>{{object.tutor_name}}</h3>
-               <span>{{object.date}}</span>
+               <h3>{{ playlist_head.tutor_name }}</h3>
+               <span>{{ playlist_head.date }}</span>
             </div>
          </div>
-   
          <div class="details">
-            <h3>{{object.topic_title}}</h3>
-            <p>{{object.topic_description}}</p>
+            <h3>{{ playlist.video_title }}</h3>
+            <p>{{ playlist_head.topic_description }}</p>
             <a href="{% url "web:teachers" %}" class="inline-btn">view profile</a>
          </div>
       </div>
    </div>
 </section>
+
 <section class="playlist-videos">
    <h1 class="heading">playlist videos</h1>
    <div class="box-container">
-     {% for p in play %} 
-      <a class="box" href="{% url "web:watch_video" p.id %}">
-         <i class="fas fa-play"></i>
-         <img src="{{p.video_thumbnail.url}}" alt="">
-         <h3>{{p.video_title}}</h3>
-      </a>
-      {% endfor %} 
+       {% for p in html_playlist %}
+           <a class="box" href="{% url "web:watch_video" p.id %}">
+               <i class="fas fa-play"></i>
+               <img src="{{ p.video_thumbnail.url }}" alt="">
+               <h3>{{ p.video_title }}</h3>
+           </a>
+       {% endfor %}
    </div>
 </section>
-
-
-
-
-
-
-
-
-
-
-
 
 {% comment %} 
 <footer class="footer">

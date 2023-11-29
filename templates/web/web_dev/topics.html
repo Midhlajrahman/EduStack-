@@ -4,7 +4,7 @@
 <section class="courses">
    <h1 class="heading">our Topics</h1>
    <div class="box-container">
-  {% for c in html_course  %}
+      {% for c in courses %}
       <div class="box">
          <div class="tutor">
             <img src="{{c.auther_image.url}}" alt="">
@@ -21,26 +21,26 @@
          <a href="{% url 'web:playlist' c.id %} " class="inline-btn">view playlist</a>
       </div>
       {% endfor %}  
-      
-      {% for c in coursu_2  %}
+    
+      {% comment %} {% for s in css_courses %}
       <div class="box">
          <div class="tutor">
-            <img src="{{c.auther_image.url}}" alt="">
+            <img src="{{s.auther_image.url}}" alt="">
             <div class="info">
-               <h3>{{c.authername}}</h3>
-               <span>{{c.date}}</span>
+               <h3>{{s.authername}}</h3>
+               <span>{{s.date}}</span>
             </div>
          </div>
          <div class="thumb">
-            <img src="{{c.thumbnail.url}}" alt="">
-            <span>{{c.howmany_video}}</span>
+            <img src="{{s.thumbnail.url}}" alt="">
+            <span>{{s.howmany_video}}</span>
          </div>
-         <h3 class="title">{{c.video_title}}</h3>
-         <a href="{% url 'web:css_playlist' c.id %}" class="inline-btn">view playlist</a>
+         <h3 class="title">{{s.video_title}}</h3>
+         <a href="{% url 'web:playlist' s.id %}" class="inline-btn">view playlist</a>
       </div>
-      {% endfor %}
-      
-      {% for c in coursu_3  %}
+      {% endfor %} {% endcomment %}
+      {% comment %}   
+      {% for c in js_courses %}
       <div class="box">
          <div class="tutor">
             <img src="{{c.auther_image.url}}" alt="">
@@ -129,7 +129,7 @@
          <h3 class="title">{{c.video_title}}</h3>
          <a href="{% url 'web:psql_playlist' c.id %}" class="inline-btn">view playlist</a>
       </div>
-      {% endfor %} 
+      {% endfor %}  {% endcomment %}
 
    </div>
 </section>

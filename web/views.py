@@ -1,4 +1,6 @@
 from django.contrib import messages
+import urllib.parse
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
@@ -6,14 +8,16 @@ from django.views.generic import DetailView, TemplateView
 import stripe
 from django.conf import settings
 from django.views import View
+from .forms import ContactForm
 from .models import (
     Course,
-    # PlaylistHead,
+    PlaylistHead,
     Playlist,
     Video,
     Contact,
     ProfileDetails,
     TeacherProfile,
+    
 )
 
 def home(request):
@@ -29,36 +33,45 @@ def about(request):
 
 
 def contact(request):
-    context = {"details": ProfileDetails.objects.all()}
+    form = ContactForm(request.POST or None)
     if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        number = request.POST.get("number")
-        message = request.POST.get("msg")
-        form = Contact(name=name, email=email, number=number, msg=message)
-        form.save()
+        if form.is_valid():
+            form.save()
+            message = (
+                f'Name: {form.cleaned_data["name"]} \n'
+                f'number: {form.cleaned_data["number"]}\n'
+                f'Email: {form.cleaned_data["email"]}\n'
+                f'Message: {form.cleaned_data["message"]}\n'
+            )
+            whatsapp_api_url = "https://api.whatsapp.com/send"
+            phone_number = "9037126305"
+            encoded_message = urllib.parse.quote(message)
+            whatsapp_url = (
+                f"{whatsapp_api_url}?phone={phone_number}&text={encoded_message}"
+            )
+            return redirect(whatsapp_url)
+        print(form.errors)
+    
+    context = {
+            "is_contact": True,
+            "form": form,
+        }
          
     return render(request,'web/web_dev/contact.html',context)
 
 
 class TopicsView(TemplateView):
-    template_name="web/web_dev/topics.html"
+    template_name = "web/web_dev/topics.html"
 
-    
-
-    def get_context_data(self, **kwargs) :
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        
-        context["html_courses"] = Course.object.filter(Course__category="html")
-        context["css_courses"] = Course.object.filter(Course__category="css")
-        context["js_courses"] = Course.object.filter(Course__category="js")
-        context["bootstrap_courses"] = Course.object.filter(Course__category="bootstrap")
-        context["react_courses"] = Course.object.filter(Course__category="react")
-        context["python_courses"] = Course.object.filter(Course__category="python")
-        context["psql_courses"] = Course.object.filter(Course__category="psql")
+
+        context["courses"] = Course.objects.all()
         context['details'] = ProfileDetails.objects.all()
-        
+
         return context
+
+
   
   
 class PlaylistView(DetailView):
@@ -67,22 +80,43 @@ class PlaylistView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["html_playlist"] = Playlist.objects.filter(category="html")
+
+        # Fetch the playlist
+        playlist = self.object
+        course = playlist.course
+
+        # Fetch the associated playlist head
+        playlist_head = playlist.playlist_head
+
+        # Add the playlist and playlist_head to the context
+        context["playlist"] = playlist
+        context["playlist_head"] = playlist_head
+
+        # Filter playlists based on the category of the associated course
+        context["html_playlist"] = Playlist.objects.filter(course=course, category="html")
         context["watch"] = Video.objects.all()
-        context["css_playlist"] = Playlist.objects.filter(category="css")
-        context["js_playlist"] = Playlist.objects.filter(category="js")
-        context["bootstrap_playlist"] = Playlist.objects.filter(category="bootstrap")
+        context["css_playlist"] = Playlist.objects.filter(course=course, category="css")
+        context["js_playlist"] = Playlist.objects.filter(course=course, category="js")
+        context["bootstrap_playlist"] = Playlist.objects.filter(course=course, category="bootstrap")
+
         return context
-    
+
+
+
 
 class WatchVideoView(View):
     template_name = "web/web_dev/watch_video/watch_video.html"
-    model = Video
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["details"] =ProfileDetails.objects.all()
-        return context
-    
+
+    def get(self, request, *args, **kwargs):
+        video_id = kwargs.get('pk')  # Assuming your URL includes the video ID
+        video = get_object_or_404(Video, pk=video_id)
+
+        context = {
+            'object': video,
+            'details': ProfileDetails.objects.all(),
+        }
+
+        return render(request, self.template_name, context)
 
 def profile(request):
     context = {"details": ProfileDetails.objects.all()}

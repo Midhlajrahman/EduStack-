@@ -17,9 +17,7 @@ urlpatterns = [
     path("profile", views.profile, name="profile"),
     path("playlist/<int:pk>", PlaylistView.as_view(), name="playlist"),
     # watch video
-    path(
-        "watch_video/<int:pk>", WatchVideoView.as_view(), name="watch_video"
-    ),
+ path("watch_video/<int:pk>", WatchVideoView.as_view(), name="watch_video"),
     path("teachers", views.teachers, name="teachers"),
     path("update", views.update, name="update"),
     path("signin", views.student_signin, name="student_signin"),
